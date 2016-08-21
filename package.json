@@ -1,6 +1,6 @@
 {
   "name": "retext-indefinite-article",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Check if indefinite articles (`a`, `an`) are used correctly",
   "license": "MIT",
   "keywords": [
