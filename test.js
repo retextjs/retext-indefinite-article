@@ -59,6 +59,7 @@ test('fixtures (these are all deemed ok)', function (t) {
 
     'This is a test sentence',
     'It was an hour ago',
+    'A unified thing',
     'A university is',
     'A one-way street',
     'An hour’s work',
