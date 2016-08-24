@@ -74,6 +74,7 @@ test('fixtures (these are all deemed ok)', function (t) {
     'Here, a and b are supplementary angles',
     'Station A equals station B',
     'A University',
+    'a unique identifier',
     'A Europe wide thing',
     'A. R.J. Turgot',
     'an MSc',
