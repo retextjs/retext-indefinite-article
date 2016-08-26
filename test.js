@@ -76,6 +76,7 @@ test('fixtures (these are all deemed ok)', function (t) {
     'A University',
     'a unique identifier',
     'A Europe wide thing',
+    'an npm package',
     'A. R.J. Turgot',
     'an MSc',
     'an XMR-based',
