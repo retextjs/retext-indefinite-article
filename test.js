@@ -1,14 +1,5 @@
-/**
- * @author Titus Wormer
- * @copyright 2016 Titus Wormer
- * @license MIT
- * @module retext-indefinite-article
- * @fileoverview Test suite for `retext-indefinite-article`.
- */
-
 'use strict';
 
-/* Dependencies. */
 var test = require('tape');
 var retext = require('retext');
 var chalk = require('chalk');
@@ -16,7 +7,6 @@ var indefiniteArticle = require('./');
 
 var proc = retext().use(indefiniteArticle);
 
-/* Tests. */
 test('indefiniteArticle()', function (t) {
   t.deepEqual(
     proc.process([
