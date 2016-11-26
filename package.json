@@ -11,6 +11,12 @@
     "an",
     "retext"
   ],
+  "repository": "https://github.com/wooorm/retext-indefinite-article",
+  "bugs": "https://github.com/wooorm/retext-indefinite-article/issues",
+  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+  ],
   "files": [
     "lib",
     "index.js"
@@ -21,12 +27,6 @@
     "unist-util-is": "^2.0.0",
     "unist-util-visit": "^1.1.0"
   },
-  "repository": "https://github.com/wooorm/retext-indefinite-article",
-  "bugs": "https://github.com/wooorm/retext-indefinite-article/issues",
-  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
-  "contributors": [
-    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
-  ],
   "devDependencies": {
     "browserify": "^13.0.1",
     "chalk": "^1.1.3",
