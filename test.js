@@ -9,7 +9,7 @@ var proc = retext().use(indefiniteArticle);
 
 test('indefiniteArticle()', function (t) {
   t.deepEqual(
-    proc.process([
+    proc.processSync([
       'He should have arrived a hour ago on an European flight.',
       'an historic event, or a historic event?'
     ].join('\n')).messages.map(String),
@@ -83,7 +83,7 @@ test('fixtures (these are all deemed ok)', function (t) {
     'a "bicycle"'
   ].forEach(function (fixture) {
     t.deepEqual(
-      proc.process(fixture).messages.map(String),
+      proc.processSync(fixture).messages.map(String),
       [],
       highlight(fixture)
     );
@@ -105,7 +105,7 @@ test('fixtures (these are all deemed ok)', function (t) {
     'In a un-united Germany',
     'Anyone for a MSc?'
   ].forEach(function (fixture) {
-    t.deepEqual(proc.process(fixture).messages.length, 1, highlight(fixture));
+    t.deepEqual(proc.processSync(fixture).messages.length, 1, highlight(fixture));
   });
 
   t.end();
