@@ -13,27 +13,40 @@ npm install retext-indefinite-article
 
 ## Usage
 
-```js
-var retext = require('retext');
-var english = require('retext-english');
-var indefiniteArticle = require('retext-indefinite-article');
-var report = require('vfile-reporter');
+Say we have the following file, `example.txt`:
 
-retext().use(english).use(indefiniteArticle).process([
-  'He should, a 8-year old boy, should have arrived a hour',
-  'ago on an European flight.  An historic event, or a',
-  'historic event? Both are fine.'
-].join('\n'), function (err, file) {
-  console.log(report(err || file));
-});
+```text
+He should, a 8-year old boy, should have arrived a hour
+ago on an European flight.  An historic event, or a
+historic event? Both are fine.
 ```
 
-Yields:
+And our script, `example.js`, looks like this:
 
-```txt
-  1:12-1:13  warning  Use `an` before `8-year`, not `a`    retext-indefinite-article
-  1:50-1:51  warning  Use `an` before `hour`, not `a`      retext-indefinite-article
-   2:8-2:10  warning  Use `a` before `European`, not `an`  retext-indefinite-article
+```javascript
+var vfile = require('to-vfile');
+var report = require('vfile-reporter');
+var unified = require('unified');
+var english = require('retext-english');
+var stringify = require('retext-stringify');
+var indefiniteArticle = require('retext-indefinite-article');
+
+unified()
+  .use(english)
+  .use(indefiniteArticle)
+  .use(stringify)
+  .process(vfile.readSync('example.txt'), function (err, file) {
+    console.error(report(err || file));
+  });
+```
+
+Now, running `node example` yields:
+
+```text
+example.txt
+  1:12-1:13  warning  Use `an` before `8-year`, not `a`    retext-indefinite-article  retext-indefinite-article
+  1:50-1:51  warning  Use `an` before `hour`, not `a`      retext-indefinite-article  retext-indefinite-article
+   2:8-2:10  warning  Use `a` before `European`, not `an`  retext-indefinite-article  retext-indefinite-article
 
 ⚠ 3 warnings
 ```
