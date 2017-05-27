@@ -59,6 +59,13 @@ Check if indefinite articles (`a` and `an`) are used correctly (which isn’t
 as simple as checking vowels as it has to do with sounds).  Knows about
 how digits are pronounced as well.
 
+## Related
+
+*   [`retext-redundant-acronyms`](https://github.com/wooorm/retext-redundant-acronyms)
+    — Check for redundant acronyms (`ATM machine`)
+*   [`retext-repeated-words`](https://github.com/wooorm/retext-repeated-words)
+    — Check `for for` repeated words
+
 ## License
 
 [MIT][license] © [Titus Wormer][author]
