@@ -49,6 +49,7 @@ test('fixtures (these are all deemed ok)', function (t) {
 
     'This is a test sentence',
     'It was an hour ago',
+    'A unidirectional flow',
     'A unified thing',
     'A university is',
     'A one-way street',
@@ -92,6 +93,7 @@ test('fixtures (these are all deemed ok)', function (t) {
   [
     'was a hour ago',
     'was an sentence',
+    'An unidirectional flow',
     'was a uninteresting',
     'An university',
     'A uninteresting',
