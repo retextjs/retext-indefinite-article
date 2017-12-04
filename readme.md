@@ -61,9 +61,9 @@ how digits are pronounced as well.
 
 ## Related
 
-*   [`retext-redundant-acronyms`](https://github.com/wooorm/retext-redundant-acronyms)
+*   [`retext-redundant-acronyms`](https://github.com/retextjs/retext-redundant-acronyms)
     — Check for redundant acronyms (`ATM machine`)
-*   [`retext-repeated-words`](https://github.com/wooorm/retext-repeated-words)
+*   [`retext-repeated-words`](https://github.com/retextjs/retext-repeated-words)
     — Check `for for` repeated words
 
 ## License
@@ -72,13 +72,13 @@ how digits are pronounced as well.
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/wooorm/retext-indefinite-article.svg
+[travis-badge]: https://img.shields.io/travis/retextjs/retext-indefinite-article.svg
 
-[travis]: https://travis-ci.org/wooorm/retext-indefinite-article
+[travis]: https://travis-ci.org/retextjs/retext-indefinite-article
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/retext-indefinite-article.svg
+[codecov-badge]: https://img.shields.io/codecov/c/github/retextjs/retext-indefinite-article.svg
 
-[codecov]: https://codecov.io/github/wooorm/retext-indefinite-article
+[codecov]: https://codecov.io/github/retextjs/retext-indefinite-article
 
 [npm-install]: https://docs.npmjs.com/cli/install
 
@@ -86,4 +86,4 @@ how digits are pronounced as well.
 
 [author]: http://wooorm.com
 
-[retext]: https://github.com/wooorm/retext
+[retext]: https://github.com/retextjs/retext

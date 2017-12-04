@@ -11,8 +11,8 @@
     "an",
     "retext"
   ],
-  "repository": "wooorm/retext-indefinite-article",
-  "bugs": "https://github.com/wooorm/retext-indefinite-article/issues",
+  "repository": "retextjs/retext-indefinite-article",
+  "bugs": "https://github.com/retextjs/retext-indefinite-article/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
