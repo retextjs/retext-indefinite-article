@@ -39,6 +39,7 @@
   "one",
   "one/*",
   "one-*",
+  "one:*",
   "oneanother",
   "oneberry",
   "onefold*",

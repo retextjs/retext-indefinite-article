@@ -59,6 +59,8 @@ test('fixtures (these are all deemed ok)', function (t) {
     'An 18-year old boy',
     'a 1/4" hole',
     'a 1-off thing',
+    'a 1:1 correspondence',
+    'a 1:00 train',
     'The A-levels are',
     'An NOP check',
     'A USA-wide license',
@@ -107,6 +109,8 @@ test('fixtures (these are all deemed ok)', function (t) {
     'A 18-year old',
     'An 1/4" hole',
     'An 1-off thing',
+    'an 1:1 correspondence',
+    'an 1:00 train',
     'asked an UN member',
     'In a un-united Germany',
     'Anyone for a MSc?'
