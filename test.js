@@ -3,7 +3,7 @@
 var test = require('tape');
 var retext = require('retext');
 var chalk = require('chalk');
-var indefiniteArticle = require('./');
+var indefiniteArticle = require('.');
 
 var proc = retext().use(indefiniteArticle);
 
