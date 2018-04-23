@@ -1,30 +1,34 @@
-'use strict';
+'use strict'
 
-var test = require('tape');
-var retext = require('retext');
-var chalk = require('chalk');
-var indefiniteArticle = require('.');
+var test = require('tape')
+var retext = require('retext')
+var chalk = require('chalk')
+var indefiniteArticle = require('.')
 
-var proc = retext().use(indefiniteArticle);
+var proc = retext().use(indefiniteArticle)
 
-test('indefiniteArticle()', function (t) {
+test('indefiniteArticle()', function(t) {
   t.deepEqual(
-    proc.processSync([
-      'He should have arrived a hour ago on an European flight.',
-      'an historic event, or a historic event?'
-    ].join('\n')).messages.map(String),
+    proc
+      .processSync(
+        [
+          'He should have arrived a hour ago on an European flight.',
+          'an historic event, or a historic event?'
+        ].join('\n')
+      )
+      .messages.map(String),
     [
       '1:24-1:25: Use `an` before `hour`, not `a`',
       '1:38-1:40: Use `a` before `European`, not `an`'
     ],
     'should catch indefiniteArticle words'
-  );
+  )
 
-  t.end();
-});
+  t.end()
+})
 
-test('fixtures (these are all deemed ok)', function (t) {
-  [
+test('fixtures (these are all deemed ok)', function(t) {
+  ;[
     /* https://en.wikipedia.org/wiki/Article_(grammar)#Indefinite_article */
     'She had a house so large that an elephant would get lost without a map',
     'a European',
@@ -75,7 +79,7 @@ test('fixtures (these are all deemed ok)', function (t) {
     'A. R.J. Turgot',
     'an MSc',
     'an XMR-based',
-    'plural A’s, A\'s, As, as, or a’s, a\'s.',
+    "plural A’s, A's, As, as, or a’s, a's.",
     /* Don’t fail without words. */
     'Station N equals station A',
     'Station N equals station A.',
@@ -86,15 +90,14 @@ test('fixtures (these are all deemed ok)', function (t) {
     /* Punctuation. */
     'an “hour',
     'a "bicycle"'
-  ].forEach(function (fixture) {
+  ].forEach(function(fixture) {
     t.deepEqual(
       proc.processSync(fixture).messages.map(String),
       [],
       highlight(fixture)
-    );
-  });
-
-  [
+    )
+  })
+  ;[
     'was a hour ago',
     'was an sentence',
     'An unidirectional flow',
@@ -114,15 +117,19 @@ test('fixtures (these are all deemed ok)', function (t) {
     'asked an UN member',
     'In a un-united Germany',
     'Anyone for a MSc?'
-  ].forEach(function (fixture) {
-    t.deepEqual(proc.processSync(fixture).messages.length, 1, highlight(fixture));
-  });
+  ].forEach(function(fixture) {
+    t.deepEqual(
+      proc.processSync(fixture).messages.length,
+      1,
+      highlight(fixture)
+    )
+  })
 
-  t.end();
-});
+  t.end()
+})
 
 function highlight(name) {
-  return name.replace(/\ban?\b/gi, function ($0) {
-    return chalk.bold($0);
-  });
+  return name.replace(/\ban?\b/gi, function($0) {
+    return chalk.bold($0)
+  })
 }

@@ -22,6 +22,7 @@
     "index.js"
   ],
   "dependencies": {
+    "format": "^0.2.2",
     "nlcst-to-string": "^2.0.0",
     "number-to-words": "^1.2.3",
     "unist-util-is": "^2.0.0",
@@ -32,6 +33,7 @@
     "chalk": "^2.0.0",
     "esmangle": "^1.0.1",
     "nyc": "^11.0.0",
+    "prettier": "^1.12.1",
     "remark-cli": "^5.0.0",
     "remark-preset-wooorm": "^4.0.0",
     "retext": "^5.0.0",
@@ -39,23 +41,24 @@
     "xo": "^0.20.0"
   },
   "scripts": {
-    "build-md": "remark . -qfo",
+    "format": "remark . -qfo && prettier --write '**/*.js' && xo --fix",
     "build-bundle": "browserify index.js --bare -s retextIndefiniteArticle > retext-indefinite-article.js",
     "build-mangle": "esmangle retext-indefinite-article.js > retext-indefinite-article.min.js",
-    "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
-    "lint": "xo",
+    "build": "npm run build-bundle && npm run build-mangle",
     "test-api": "node test",
     "test-coverage": "nyc --reporter lcov tape test.js",
-    "test": "npm run build && npm run lint && npm run test-coverage"
+    "test": "npm run format && npm run build && npm run test-coverage"
   },
-  "nyc": {
-    "check-coverage": true,
-    "lines": 100,
-    "functions": 100,
-    "branches": 100
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "semi": false,
+    "trailingComma": "none"
   },
   "xo": {
-    "space": true,
+    "prettier": true,
     "esnext": false,
     "rules": {
       "no-var": "off",
@@ -69,5 +72,11 @@
     "plugins": [
       "preset-wooorm"
     ]
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100
   }
 }
