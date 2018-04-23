@@ -68,7 +68,8 @@ how digits are pronounced as well.
 
 ## Contribute
 
-See [`contribute.md` in `retextjs/retext`][contribute] for ways to get started.
+See [`contributing.md` in `retextjs/retext`][contribute] for ways to get
+started.
 
 This organisation has a [Code of Conduct][coc].  By interacting with this
 repository, organisation, or community you agree to abide by its terms.
