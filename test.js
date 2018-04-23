@@ -80,6 +80,7 @@ test('fixtures (these are all deemed ok)', function(t) {
     'an MSc',
     'an XMR-based',
     "plural A’s, A's, As, as, or a’s, a's.",
+    'They form a union and get laws passed.',
     /* Don’t fail without words. */
     'Station N equals station A',
     'Station N equals station A.',
@@ -116,7 +117,8 @@ test('fixtures (these are all deemed ok)', function(t) {
     'an 1:00 train',
     'asked an UN member',
     'In a un-united Germany',
-    'Anyone for a MSc?'
+    'Anyone for a MSc?',
+    'They form an union and get laws passed.'
   ].forEach(function(fixture) {
     t.deepEqual(
       proc.processSync(fixture).messages.length,
