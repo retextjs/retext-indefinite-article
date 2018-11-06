@@ -32,13 +32,13 @@
     "browserify": "^16.0.0",
     "chalk": "^2.0.0",
     "esmangle": "^1.0.1",
-    "nyc": "^11.0.0",
+    "nyc": "^13.0.0",
     "prettier": "^1.12.1",
-    "remark-cli": "^5.0.0",
+    "remark-cli": "^6.0.0",
     "remark-preset-wooorm": "^4.0.0",
     "retext": "^5.0.0",
     "tape": "^4.0.0",
-    "xo": "^0.20.0"
+    "xo": "^0.23.0"
   },
   "scripts": {
     "format": "remark . -qfo && prettier --write '**/*.js' && xo --fix",
