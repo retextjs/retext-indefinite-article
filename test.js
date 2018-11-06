@@ -29,7 +29,7 @@ test('indefiniteArticle()', function(t) {
 
 test('fixtures (these are all deemed ok)', function(t) {
   ;[
-    /* https://en.wikipedia.org/wiki/Article_(grammar)#Indefinite_article */
+    // https://en.wikipedia.org/wiki/Article_(grammar)#Indefinite_article
     'She had a house so large that an elephant would get lost without a map',
     'a European',
     'a hallucination',
@@ -81,14 +81,14 @@ test('fixtures (these are all deemed ok)', function(t) {
     'an XMR-based',
     "plural A’s, A's, As, as, or a’s, a's.",
     'They form a union and get laws passed.',
-    /* Don’t fail without words. */
+    // Don’t fail without words.
     'Station N equals station A',
     'Station N equals station A.',
     'a.',
     'an.',
     'a "',
     'a (',
-    /* Punctuation. */
+    // Punctuation.
     'an “hour',
     'a "bicycle"'
   ].forEach(function(fixture) {
