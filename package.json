@@ -31,19 +31,19 @@
   "devDependencies": {
     "browserify": "^16.0.0",
     "chalk": "^2.0.0",
-    "esmangle": "^1.0.1",
     "nyc": "^13.0.0",
     "prettier": "^1.12.1",
     "remark-cli": "^6.0.0",
     "remark-preset-wooorm": "^4.0.0",
     "retext": "^5.0.0",
     "tape": "^4.0.0",
+    "tinyify": "^2.4.3",
     "xo": "^0.23.0"
   },
   "scripts": {
     "format": "remark . -qfo && prettier --write '**/*.js' && xo --fix",
-    "build-bundle": "browserify index.js --bare -s retextIndefiniteArticle > retext-indefinite-article.js",
-    "build-mangle": "esmangle retext-indefinite-article.js > retext-indefinite-article.min.js",
+    "build-bundle": "browserify . -s retextIndefiniteArticle > retext-indefinite-article.js",
+    "build-mangle": "browserify . -s retextIndefiniteArticle -p tinyify > retext-indefinite-article.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
     "test-api": "node test",
     "test-coverage": "nyc --reporter lcov tape test.js",
