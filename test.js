@@ -63,6 +63,7 @@ test('fixtures (these are all deemed ok)', function(t) {
     'An 18-year old boy',
     'a 1/4" hole',
     'a 1-off thing',
+    'a 1x increase',
     'a 1:1 correspondence',
     'a 1:00 train',
     'The A-levels are',
