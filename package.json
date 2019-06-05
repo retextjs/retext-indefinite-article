@@ -1,15 +1,17 @@
 {
   "name": "retext-indefinite-article",
   "version": "1.1.6",
-  "description": "Check if indefinite articles (`a`, `an`) are used correctly",
+  "description": "retext plugin to check if indefinite articles (`a`, `an`) are used correctly",
   "license": "MIT",
   "keywords": [
+    "unified",
+    "retext",
+    "plugin",
     "indefinite",
     "article",
     "articles",
     "a",
-    "an",
-    "retext"
+    "an"
   ],
   "repository": "retextjs/retext-indefinite-article",
   "bugs": "https://github.com/retextjs/retext-indefinite-article/issues",
