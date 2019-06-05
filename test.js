@@ -8,27 +8,25 @@ var indefiniteArticle = require('.')
 var proc = retext().use(indefiniteArticle)
 
 test('indefiniteArticle()', function(t) {
-  t.deepEqual(
-    proc
-      .processSync(
-        [
-          'He should have arrived a hour ago on an European flight.',
-          'an historic event, or a historic event?'
-        ].join('\n')
-      )
-      .messages.map(String),
+  proc.process(
     [
-      '1:24-1:25: Use `an` before `hour`, not `a`',
-      '1:38-1:40: Use `a` before `European`, not `an`'
-    ],
-    'should catch indefiniteArticle words'
+      'He should have arrived a hour ago on an European flight.',
+      'an historic event, or a historic event?'
+    ].join('\n'),
+    function(err, file) {
+      t.deepEqual(
+        [err].concat(file.messages.map(String)),
+        [
+          null,
+          '1:24-1:25: Use `an` before `hour`, not `a`',
+          '1:38-1:40: Use `a` before `European`, not `an`'
+        ],
+        'should catch indefinite articles'
+      )
+    }
   )
 
-  t.end()
-})
-
-test('fixtures (these are all deemed ok)', function(t) {
-  ;[
+  var good = [
     // https://en.wikipedia.org/wiki/Article_(grammar)#Indefinite_article
     'She had a house so large that an elephant would get lost without a map',
     'a European',
@@ -92,14 +90,9 @@ test('fixtures (these are all deemed ok)', function(t) {
     // Punctuation.
     'an “hour',
     'a "bicycle"'
-  ].forEach(function(fixture) {
-    t.deepEqual(
-      proc.processSync(fixture).messages.map(String),
-      [],
-      highlight(fixture)
-    )
-  })
-  ;[
+  ]
+
+  var bad = [
     'was a hour ago',
     'was an sentence',
     'An unidirectional flow',
@@ -120,19 +113,31 @@ test('fixtures (these are all deemed ok)', function(t) {
     'In a un-united Germany',
     'Anyone for a MSc?',
     'They form an union and get laws passed.'
-  ].forEach(function(fixture) {
-    t.deepEqual(
-      proc.processSync(fixture).messages.length,
-      1,
-      highlight(fixture)
-    )
+  ]
+
+  good.forEach(function(fixture) {
+    proc.process(fixture, function(err, file) {
+      t.deepEqual(
+        [err].concat(file.messages.map(String)),
+        [null],
+        highlight(fixture)
+      )
+    })
+  })
+
+  bad.forEach(function(fixture) {
+    proc.process(fixture, function(err, file) {
+      t.deepEqual([err, file.messages.length], [null, 1], highlight(fixture))
+    })
   })
 
   t.end()
 })
 
 function highlight(name) {
-  return name.replace(/\ban?\b/gi, function($0) {
-    return chalk.bold($0)
-  })
+  return name.replace(/\ban?\b/gi, bold)
+}
+
+function bold($0) {
+  return chalk.bold($0)
 }
