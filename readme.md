@@ -1,29 +1,37 @@
-# retext-indefinite-article [![Build][build-badge]][build] [![Coverage][coverage-badge]][coverage] [![Downloads][downloads-badge]][downloads] [![Chat][chat-badge]][chat]
+# retext-indefinite-article
 
-Check if indefinite articles (`a` and `an`) are used correctly with
-[**retext**][retext].
+[![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
+[![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
+[![Sponsors][sponsors-badge]][collective]
+[![Backers][backers-badge]][collective]
+[![Chat][chat-badge]][chat]
 
-## Installation
+[**retext**][retext] plugin to check if indefinite articles (`a` and `an`) are
+used correctly.
 
-[npm][npm-install]:
+## Install
 
-```bash
+[npm][]:
+
+```sh
 npm install retext-indefinite-article
 ```
 
-## Usage
+## Use
 
 Say we have the following file, `example.txt`:
 
-```text
+```txt
 He should, a 8-year old boy, should have arrived a hour
 ago on an European flight.  An historic event, or a
 historic event? Both are fine.
 ```
 
-And our script, `example.js`, looks like this:
+…and our script, `example.js`, looks like this:
 
-```javascript
+```js
 var vfile = require('to-vfile')
 var report = require('vfile-reporter')
 var unified = require('unified')
@@ -42,7 +50,7 @@ unified()
 
 Now, running `node example` yields:
 
-```text
+```txt
 example.txt
   1:12-1:13  warning  Use `an` before `8-year`, not `a`    retext-indefinite-article  retext-indefinite-article
   1:50-1:51  warning  Use `an` before `hour`, not `a`      retext-indefinite-article  retext-indefinite-article
@@ -55,9 +63,9 @@ example.txt
 
 ### `retext().use(indefiniteArticle)`
 
-Check if indefinite articles (`a` and `an`) are used correctly (which isn’t
-as simple as checking vowels as it has to do with sounds).  Knows about
-how digits are pronounced as well.
+Check if indefinite articles (`a` and `an`) are used correctly (which isn’t as
+simple as checking vowels as it has to do with sounds).
+Knows about how digits are pronounced as well.
 
 ## Related
 
@@ -68,11 +76,13 @@ how digits are pronounced as well.
 
 ## Contribute
 
-See [`contributing.md` in `retextjs/retext`][contributing] for ways to get
-started.
+See [`contributing.md`][contributing] in [`retextjs/.github`][health] for ways
+to get started.
+See [`support.md`][support] for ways to get help.
 
-This organisation has a [Code of Conduct][coc].  By interacting with this
-repository, organisation, or community you agree to abide by its terms.
+This project has a [Code of Conduct][coc].
+By interacting with this repository, organisation, or community you agree to
+abide by its terms.
 
 ## License
 
@@ -92,18 +102,32 @@ repository, organisation, or community you agree to abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/retext-indefinite-article
 
+[size-badge]: https://img.shields.io/bundlephobia/minzip/retext-indefinite-article.svg
+
+[size]: https://bundlephobia.com/result?p=retext-indefinite-article
+
+[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
+
+[backers-badge]: https://opencollective.com/unified/backers/badge.svg
+
+[collective]: https://opencollective.com/unified
+
 [chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
 
 [chat]: https://spectrum.chat/unified/retext
 
-[npm-install]: https://docs.npmjs.com/cli/install
+[npm]: https://docs.npmjs.com/cli/install
+
+[health]: https://github.com/retextjs/.github
+
+[contributing]: https://github.com/retextjs/.github/blob/master/contributing.md
+
+[support]: https://github.com/retextjs/.github/blob/master/support.md
+
+[coc]: https://github.com/retextjs/.github/blob/master/code-of-conduct.md
 
 [license]: license
 
 [author]: https://wooorm.com
 
 [retext]: https://github.com/retextjs/retext
-
-[contributing]: https://github.com/retextjs/retext/blob/master/contributing.md
-
-[coc]: https://github.com/retextjs/retext/blob/master/code-of-conduct.md
