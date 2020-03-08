@@ -33,7 +33,7 @@
     "nlcst-to-string": "^2.0.0",
     "number-to-words": "^1.2.3",
     "unist-util-is": "^4.0.0",
-    "unist-util-visit": "^1.1.0"
+    "unist-util-visit": "^2.0.0"
   },
   "devDependencies": {
     "browserify": "^16.0.0",
