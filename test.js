@@ -7,13 +7,13 @@ var indefiniteArticle = require('.')
 
 var proc = retext().use(indefiniteArticle)
 
-test('indefiniteArticle()', function(t) {
+test('indefiniteArticle()', function (t) {
   proc.process(
     [
       'He should have arrived a hour ago on an European flight.',
       'an historic event, or a historic event?'
     ].join('\n'),
-    function(err, file) {
+    function (err, file) {
       t.deepEqual(
         [err].concat(file.messages.map(String)),
         [
@@ -115,8 +115,8 @@ test('indefiniteArticle()', function(t) {
     'They form an union and get laws passed.'
   ]
 
-  good.forEach(function(fixture) {
-    proc.process(fixture, function(err, file) {
+  good.forEach(function (fixture) {
+    proc.process(fixture, function (err, file) {
       t.deepEqual(
         [err].concat(file.messages.map(String)),
         [null],
@@ -125,8 +125,8 @@ test('indefiniteArticle()', function(t) {
     })
   })
 
-  bad.forEach(function(fixture) {
-    proc.process(fixture, function(err, file) {
+  bad.forEach(function (fixture) {
+    proc.process(fixture, function (err, file) {
       t.deepEqual([err, file.messages.length], [null, 1], highlight(fixture))
     })
   })
