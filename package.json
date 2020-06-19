@@ -45,10 +45,10 @@
     "retext": "^7.0.0",
     "tape": "^5.0.0",
     "tinyify": "^2.0.0",
-    "xo": "^0.30.0"
+    "xo": "^0.32.0"
   },
   "scripts": {
-    "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
+    "format": "remark . -qfo && prettier . --write && xo --fix",
     "build-bundle": "browserify . -s retextIndefiniteArticle > retext-indefinite-article.js",
     "build-mangle": "browserify . -s retextIndefiniteArticle -p tinyify > retext-indefinite-article.min.js",
     "build": "npm run build-bundle && npm run build-mangle",

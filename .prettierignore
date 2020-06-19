@@ -1,3 +1,5 @@
 coverage/
 retext-indefinite-article.js
 retext-indefinite-article.min.js
+*.json
+*.md
