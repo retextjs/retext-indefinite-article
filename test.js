@@ -13,9 +13,9 @@ test('indefiniteArticle()', function (t) {
       'He should have arrived a hour ago on an European flight.',
       'an historic event, or a historic event?'
     ].join('\n'),
-    function (err, file) {
+    function (error, file) {
       t.deepEqual(
-        [err].concat(file.messages.map(String)),
+        [error].concat(file.messages.map(String)),
         [
           null,
           '1:24-1:25: Use `an` before `hour`, not `a`',
@@ -120,9 +120,9 @@ test('indefiniteArticle()', function (t) {
   ]
 
   good.forEach(function (fixture) {
-    proc.process(fixture, function (err, file) {
+    proc.process(fixture, function (error, file) {
       t.deepEqual(
-        [err].concat(file.messages.map(String)),
+        [error].concat(file.messages.map(String)),
         [null],
         highlight(fixture)
       )
@@ -130,8 +130,8 @@ test('indefiniteArticle()', function (t) {
   })
 
   bad.forEach(function (fixture) {
-    proc.process(fixture, function (err, file) {
-      t.deepEqual([err, file.messages.length], [null, 1], highlight(fixture))
+    proc.process(fixture, function (error, file) {
+      t.deepEqual([error, file.messages.length], [null, 1], highlight(fixture))
     })
   })
 
