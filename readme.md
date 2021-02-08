@@ -90,9 +90,9 @@ abide by its terms.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/retextjs/retext-indefinite-article.svg
+[build-badge]: https://github.com/retextjs/retext-indefinite-article/workflows/main/badge.svg
 
-[build]: https://travis-ci.org/retextjs/retext-indefinite-article
+[build]: https://github.com/retextjs/retext-indefinite-article/actions
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/retextjs/retext-indefinite-article.svg
 
