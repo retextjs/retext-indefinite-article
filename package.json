@@ -48,7 +48,7 @@
     "xo": "^0.37.0"
   },
   "scripts": {
-    "format": "remark . -qfo && prettier . --write && xo --fix",
+    "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
     "build-bundle": "browserify . -s retextIndefiniteArticle > retext-indefinite-article.js",
     "build-mangle": "browserify . -s retextIndefiniteArticle -p tinyify > retext-indefinite-article.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
