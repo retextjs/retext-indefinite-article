@@ -45,7 +45,7 @@
     "retext": "^7.0.0",
     "tape": "^5.0.0",
     "tinyify": "^3.0.0",
-    "xo": "^0.37.0"
+    "xo": "^0.38.0"
   },
   "scripts": {
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
@@ -69,6 +69,7 @@
     "esnext": false,
     "rules": {
       "unicorn/no-array-callback-reference": "off",
+      "unicorn/no-array-for-each": "off",
       "unicorn/prefer-includes": "off"
     },
     "ignores": [
