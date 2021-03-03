@@ -95,7 +95,8 @@ test('indefiniteArticle()', function (t) {
     'a (',
     // Punctuation.
     'an “hour',
-    'a "bicycle"'
+    'a "bicycle"',
+    'a unicycle'
   ]
 
   var bad = [
@@ -120,7 +121,8 @@ test('indefiniteArticle()', function (t) {
     'asked an UN member',
     'In a un-united Germany',
     'Anyone for a MSc?',
-    'They form an union and get laws passed.'
+    'They form an union and get laws passed.',
+    'an unicycle'
   ]
 
   good.forEach(function (fixture) {
