@@ -1,7 +1,5 @@
-.DS_Store
-*.log
 coverage/
 node_modules/
-retext-indefinite-article.js
-retext-indefinite-article.min.js
+.DS_Store
+*.log
 yarn.lock
