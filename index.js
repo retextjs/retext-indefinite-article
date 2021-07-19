@@ -1,2 +1,3 @@
-'use strict'
-module.exports = require('./lib')
+import retextIndefiniteArticle from './lib/index.js'
+
+export default retextIndefiniteArticle

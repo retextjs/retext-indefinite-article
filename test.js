@@ -1,9 +1,7 @@
-'use strict'
-
-var test = require('tape')
-var retext = require('retext')
-var chalk = require('chalk')
-var indefiniteArticle = require('.')
+import test from 'tape'
+import retext from 'retext'
+import chalk from 'chalk'
+import indefiniteArticle from './index.js'
 
 var proc = retext().use(indefiniteArticle)
 

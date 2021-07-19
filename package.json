@@ -24,8 +24,11 @@
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
+  "sideEffects": false,
+  "type": "module",
+  "main": "index.js",
   "files": [
-    "lib",
+    "lib/",
     "index.js"
   ],
   "dependencies": {
@@ -43,7 +46,7 @@
     "remark-preset-wooorm": "^8.0.0",
     "retext": "^7.0.0",
     "tape": "^5.0.0",
-    "xo": "^0.38.0"
+    "xo": "^0.39.0"
   },
   "scripts": {
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
@@ -61,8 +64,9 @@
   },
   "xo": {
     "prettier": true,
-    "esnext": false,
     "rules": {
+      "no-var": "off",
+      "prefer-arrow-callback": "off",
       "unicorn/no-array-callback-reference": "off",
       "unicorn/no-array-for-each": "off",
       "unicorn/prefer-includes": "off"
