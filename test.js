@@ -1,5 +1,5 @@
 import test from 'tape'
-import retext from 'retext'
+import {retext} from 'retext'
 import chalk from 'chalk'
 import indefiniteArticle from './index.js'
 
