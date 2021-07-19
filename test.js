@@ -3,28 +3,10 @@ import {retext} from 'retext'
 import chalk from 'chalk'
 import indefiniteArticle from './index.js'
 
-var proc = retext().use(indefiniteArticle)
+const proc = retext().use(indefiniteArticle)
 
-test('indefiniteArticle()', function (t) {
-  proc.process(
-    [
-      'He should have arrived a hour ago on an European flight.',
-      'an historic event, or a historic event?'
-    ].join('\n'),
-    function (error, file) {
-      t.deepEqual(
-        [error].concat(file.messages.map(String)),
-        [
-          null,
-          '1:24-1:25: Use `an` before `hour`, not `a`',
-          '1:38-1:40: Use `a` before `European`, not `an`'
-        ],
-        'should catch indefinite articles'
-      )
-    }
-  )
-
-  var good = [
+test('indefiniteArticle()', (t) => {
+  const good = [
     // https://en.wikipedia.org/wiki/Article_(grammar)#Indefinite_article
     'She had a house so large that an elephant would get lost without a map',
     'a European',
@@ -97,7 +79,7 @@ test('indefiniteArticle()', function (t) {
     'a unicycle'
   ]
 
-  var bad = [
+  const bad = [
     'was a hour ago',
     'was an sentence',
     'An unidirectional flow',
@@ -123,29 +105,48 @@ test('indefiniteArticle()', function (t) {
     'an unicycle'
   ]
 
-  good.forEach(function (fixture) {
-    proc.process(fixture, function (error, file) {
+  t.plan(good.length + bad.length + 1)
+
+  proc
+    .process(
+      [
+        'He should have arrived a hour ago on an European flight.',
+        'an historic event, or a historic event?'
+      ].join('\n')
+    )
+    .then((file) => {
       t.deepEqual(
-        [error].concat(file.messages.map(String)),
-        [null],
+        file.messages.map((d) => String(d)),
+        [
+          '1:24-1:25: Use `an` before `hour`, not `a`',
+          '1:38-1:40: Use `a` before `European`, not `an`'
+        ],
+        'should catch indefinite articles'
+      )
+    }, t.ifErr)
+
+  let index = -1
+
+  while (++index < good.length) {
+    const fixture = good[index]
+    proc.process(fixture).then((file) => {
+      t.deepEqual(
+        file.messages.map((d) => String(d)),
+        [],
         highlight(fixture)
       )
-    })
-  })
+    }, t.ifErr)
+  }
 
-  bad.forEach(function (fixture) {
-    proc.process(fixture, function (error, file) {
-      t.deepEqual([error, file.messages.length], [null, 1], highlight(fixture))
-    })
-  })
-
-  t.end()
+  index = -1
+  while (++index < bad.length) {
+    const fixture = bad[index]
+    proc.process(fixture).then((file) => {
+      t.equal(file.messages.length, 1, highlight(fixture))
+    }, t.ifErr)
+  }
 })
 
 function highlight(name) {
-  return name.replace(/\ban?\b/gi, bold)
-}
-
-function bold($0) {
-  return chalk.bold($0)
+  return name.replace(/\ban?\b/gi, ($0) => chalk.bold($0))
 }
