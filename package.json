@@ -33,10 +33,10 @@
   ],
   "dependencies": {
     "format": "^0.2.2",
-    "nlcst-to-string": "^2.0.0",
+    "nlcst-to-string": "^3.0.0",
     "number-to-words": "^1.2.3",
-    "unist-util-is": "^4.0.0",
-    "unist-util-visit": "^2.0.0"
+    "unist-util-is": "^5.0.0",
+    "unist-util-visit": "^3.0.0"
   },
   "devDependencies": {
     "c8": "^7.0.0",
