@@ -147,6 +147,10 @@ test('indefiniteArticle()', (t) => {
   }
 })
 
+/**
+ * @param {string} name
+ * @returns {name}
+ */
 function highlight(name) {
   return name.replace(/\ban?\b/gi, ($0) => chalk.bold($0))
 }
