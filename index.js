@@ -1,3 +1,1 @@
-import retextIndefiniteArticle from './lib/index.js'
-
-export default retextIndefiniteArticle
+export {default} from './lib/index.js'
