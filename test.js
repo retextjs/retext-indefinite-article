@@ -28,6 +28,8 @@ test('indefiniteArticle()', (t) => {
     'an herb',
     'a hereditary',
     'an hereditary',
+    'a unist tree',
+    'an mdast tree',
 
     'This is a test sentence',
     'It was an hour ago',
