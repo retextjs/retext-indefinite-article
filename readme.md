@@ -8,23 +8,61 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-[**retext**][retext] plugin to check if indefinite articles (`a` and `an`) are
-used correctly.
+**[retext][]** plugin to check indefinite articles.
+
+## Contents
+
+*   [What is this?](#what-is-this)
+*   [When should I use this?](#when-should-i-use-this)
+*   [Install](#install)
+*   [Use](#use)
+*   [API](#api)
+    *   [`unified().use(retextIndefiniteArticle)`](#unifieduseretextindefinitearticle)
+*   [Messages](#messages)
+*   [Types](#types)
+*   [Compatibility](#compatibility)
+*   [Related](#related)
+*   [Contribute](#contribute)
+*   [License](#license)
+
+## What is this?
+
+This package is a [unified][] ([retext][]) plugin to check indefinite articles
+(`a` and `an`).
+It’s more complex than checking vowels, as it has to do with sounds.
+Knows about how digits are pronounced as well.
+
+## When should I use this?
+
+You can opt-into this plugin when you’re dealing with content that might contain
+grammar mistakes, and have authors that can fix that content.
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
-Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
-
-[npm][]:
+This package is [ESM only][esm].
+In Node.js (version 12.20+, 14.14+, 16.0+, or 18.0+), install with [npm][]:
 
 ```sh
 npm install retext-indefinite-article
 ```
 
+In Deno with [`esm.sh`][esmsh]:
+
+```js
+import retextIndefiniteArticle from 'https://esm.sh/retext-indefinite-article@4'
+```
+
+In browsers with [`esm.sh`][esmsh]:
+
+```html
+<script type="module">
+  import retextIndefiniteArticle from 'https://esm.sh/retext-indefinite-article@4?bundle'
+</script>
+```
+
 ## Use
 
-Say we have the following file, `example.txt`:
+Say our document `example.txt` contains:
 
 ```txt
 He should, a 8-year old boy, should have arrived a hour
@@ -32,29 +70,26 @@ ago on an European flight.  An historic event, or a
 historic event? Both are fine.
 ```
 
-…and our script, `example.js`, looks like this:
+…and our module `example.js` looks as follows:
 
 ```js
-import {readSync} from 'to-vfile'
+import {read} from 'to-vfile'
 import {reporter} from 'vfile-reporter'
 import {unified} from 'unified'
 import retextEnglish from 'retext-english'
 import retextIndefiniteArticle from 'retext-indefinite-article'
 import retextStringify from 'retext-stringify'
 
-const file = readSync('example.txt')
-
-unified()
+const file = await unified()
   .use(retextEnglish)
   .use(retextIndefiniteArticle)
   .use(retextStringify)
-  .process(file)
-  .then((file) => {
-    console.error(reporter(file))
-  })
+  .process(await read('example.txt'))
+
+console.error(reporter(file))
 ```
 
-Now, running `node example` yields:
+…now running `node example.js` yields:
 
 ```txt
 example.txt
@@ -72,16 +107,49 @@ The default export is `retextIndefiniteArticle`.
 
 ### `unified().use(retextIndefiniteArticle)`
 
-Check if indefinite articles (`a` and `an`) are used correctly (which isn’t as
-simple as checking vowels as it has to do with sounds).
-Knows about how digits are pronounced as well.
+Check indefinite articles.
+
+There are no options.
+
+## Messages
+
+Each message is emitted as a [`VFileMessage`][vfile-message] on `file`, with
+the following fields:
+
+###### `message.source`
+
+Name of this plugin (`'retext-indefinite-article'`).
+
+###### `message.ruleId`
+
+Name of this plugin (`'retext-indefinite-article'`).
+
+###### `message.actual`
+
+Current not ok word (`string`, `'a'` or `'an'`).
+
+###### `message.expected`
+
+Array with one value (`Array<string>`, containing either `'a'` or `'an'`).
+
+## Types
+
+This package is fully typed with [TypeScript][].
+It exports no additional types.
+
+## Compatibility
+
+Projects maintained by the unified collective are compatible with all maintained
+versions of Node.js.
+As of now, that is Node.js 12.20+, 14.14+, 16.0+, and 18.0+.
+Our projects sometimes work with older versions, but this is not guaranteed.
 
 ## Related
 
 *   [`retext-redundant-acronyms`](https://github.com/retextjs/retext-redundant-acronyms)
-    — Check for redundant acronyms (`ATM machine`)
+    — check for redundant acronyms (`ATM machine`)
 *   [`retext-repeated-words`](https://github.com/retextjs/retext-repeated-words)
-    — Check `for for` repeated words
+    — check `for for` repeated words
 
 ## Contribute
 
@@ -127,16 +195,26 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+[esmsh]: https://esm.sh
+
+[typescript]: https://www.typescriptlang.org
+
 [health]: https://github.com/retextjs/.github
 
-[contributing]: https://github.com/retextjs/.github/blob/HEAD/contributing.md
+[contributing]: https://github.com/retextjs/.github/blob/main/contributing.md
 
-[support]: https://github.com/retextjs/.github/blob/HEAD/support.md
+[support]: https://github.com/retextjs/.github/blob/main/support.md
 
-[coc]: https://github.com/retextjs/.github/blob/HEAD/code-of-conduct.md
+[coc]: https://github.com/retextjs/.github/blob/main/code-of-conduct.md
 
 [license]: license
 
 [author]: https://wooorm.com
 
+[unified]: https://github.com/unifiedjs/unified
+
 [retext]: https://github.com/retextjs/retext
+
+[vfile-message]: https://github.com/vfile/vfile-message
