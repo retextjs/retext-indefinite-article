@@ -118,7 +118,7 @@ test('indefiniteArticle()', (t) => {
     )
     .then((file) => {
       t.deepEqual(
-        file.messages.map((d) => String(d)),
+        file.messages.map(String),
         [
           '1:24-1:25: Use `an` before `hour`, not `a`',
           '1:38-1:40: Use `a` before `European`, not `an`'
@@ -132,11 +132,7 @@ test('indefiniteArticle()', (t) => {
   while (++index < good.length) {
     const fixture = good[index]
     proc.process(fixture).then((file) => {
-      t.deepEqual(
-        file.messages.map((d) => String(d)),
-        [],
-        highlight(fixture)
-      )
+      t.deepEqual(file.messages.map(String), [], highlight(fixture))
     }, t.ifErr)
   }
 
