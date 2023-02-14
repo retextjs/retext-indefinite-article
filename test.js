@@ -104,7 +104,7 @@ test('indefiniteArticle()', (t) => {
     'In a un-united Germany',
     'Anyone for a MSc?',
     'They form an union and get laws passed.',
-    'an unicycle'
+    'an unicycle',
     'an URL'
   ]
 
