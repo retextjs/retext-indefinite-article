@@ -105,6 +105,7 @@ test('indefiniteArticle()', (t) => {
     'Anyone for a MSc?',
     'They form an union and get laws passed.',
     'an unicycle'
+    'an URL'
   ]
 
   t.plan(good.length + bad.length + 1)
