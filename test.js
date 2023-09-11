@@ -22,8 +22,8 @@ test('retextIndefiniteArticle', async function (t) {
       )
 
     assert.deepEqual(file.messages.map(String), [
-      '1:24-1:25: Use `an` before `hour`, not `a`',
-      '1:38-1:40: Use `a` before `European`, not `an`'
+      '1:24-1:25: Unexpected article `a` before `hour`, expected `an`',
+      '1:38-1:40: Unexpected article `an` before `European`, expected `a`'
     ])
   })
 
@@ -162,7 +162,7 @@ test('retextIndefiniteArticle', async function (t) {
  * @param {string} name
  *   Value.
  * @returns {name}
- *   Value with indefinite articles highlighted.
+ *   Value with `a` and `an` highlighted.
  */
 function highlight(name) {
   return name.replace(/\ban?\b/gi, function ($0) {
