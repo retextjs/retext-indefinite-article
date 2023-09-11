@@ -1,6 +1,6 @@
 {
   "name": "retext-indefinite-article",
-  "version": "4.3.0",
+  "version": "5.0.0",
   "description": "retext plugin to check if indefinite articles (`a`, `an`) are used correctly",
   "license": "MIT",
   "keywords": [

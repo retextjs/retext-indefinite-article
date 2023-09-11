@@ -49,14 +49,14 @@ npm install retext-indefinite-article
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import retextIndefiniteArticle from 'https://esm.sh/retext-indefinite-article@4'
+import retextIndefiniteArticle from 'https://esm.sh/retext-indefinite-article@5'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import retextIndefiniteArticle from 'https://esm.sh/retext-indefinite-article@4?bundle'
+  import retextIndefiniteArticle from 'https://esm.sh/retext-indefinite-article@5?bundle'
 </script>
 ```
 
