@@ -2,13 +2,14 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import chalk from 'chalk'
 import {retext} from 'retext'
-import retextIndefiniteArticle from './index.js'
+import retextIndefiniteArticle from 'retext-indefinite-article'
 
 test('retextIndefiniteArticle', async function (t) {
   await t.test('should expose the public api', async function () {
-    assert.deepEqual(Object.keys(await import('./index.js')).sort(), [
-      'default'
-    ])
+    assert.deepEqual(
+      Object.keys(await import('retext-indefinite-article')).sort(),
+      ['default']
+    )
   })
 
   await t.test('should catch indefinite articles', async function () {
