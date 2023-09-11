@@ -8,7 +8,7 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-**[retext][]** plugin to check indefinite articles.
+**[retext][]** plugin to check `a` and `an`.
 
 ## Contents
 
@@ -30,17 +30,17 @@
 This package is a [unified][] ([retext][]) plugin to check indefinite articles
 (`a` and `an`).
 It’s more complex than checking vowels, as it has to do with sounds.
-Knows about how digits are pronounced as well.
+This package knows about how digits are pronounced as well.
 
 ## When should I use this?
 
-You can opt-into this plugin when you’re dealing with content that might contain
+You can use this plugin when you’re dealing with content that might contain
 grammar mistakes, and have authors that can fix that content.
 
 ## Install
 
 This package is [ESM only][esm].
-In Node.js (version 12.20+, 14.14+, 16.0+, or 18.0+), install with [npm][]:
+In Node.js (version 16+), install with [npm][]:
 
 ```sh
 npm install retext-indefinite-article
@@ -66,19 +66,19 @@ Say our document `example.txt` contains:
 
 ```txt
 He should, a 8-year old boy, should have arrived a hour
-ago on an European flight.  An historic event, or a
-historic event? Both are fine.
+ago on an European flight.
+An historic event, or a historic event? Both are fine.
 ```
 
-…and our module `example.js` looks as follows:
+…and our module `example.js` contains:
 
 ```js
-import {read} from 'to-vfile'
-import {reporter} from 'vfile-reporter'
-import {unified} from 'unified'
 import retextEnglish from 'retext-english'
 import retextIndefiniteArticle from 'retext-indefinite-article'
 import retextStringify from 'retext-stringify'
+import {read} from 'to-vfile'
+import {unified} from 'unified'
+import {reporter} from 'vfile-reporter'
 
 const file = await unified()
   .use(retextEnglish)
@@ -93,9 +93,9 @@ console.error(reporter(file))
 
 ```txt
 example.txt
-  1:12-1:13  warning  Use `an` before `8-year`, not `a`    retext-indefinite-article  retext-indefinite-article
-  1:50-1:51  warning  Use `an` before `hour`, not `a`      retext-indefinite-article  retext-indefinite-article
-   2:8-2:10  warning  Use `a` before `European`, not `an`  retext-indefinite-article  retext-indefinite-article
+1:12-1:13 warning Unexpected article `a` before `8-year`, expected `an`   retext-indefinite-article retext-indefinite-article
+1:50-1:51 warning Unexpected article `a` before `hour`, expected `an`     retext-indefinite-article retext-indefinite-article
+2:8-2:10  warning Unexpected article `an` before `European`, expected `a` retext-indefinite-article retext-indefinite-article
 
 ⚠ 3 warnings
 ```
@@ -103,34 +103,27 @@ example.txt
 ## API
 
 This package exports no identifiers.
-The default export is `retextIndefiniteArticle`.
+The default export is
+[`retextIndefiniteArticle`][api-retext-indefinite-article].
 
 ### `unified().use(retextIndefiniteArticle)`
 
-Check indefinite articles.
+Check `a` and `an`.
 
-There are no options.
+###### Parameters
+
+There are no parameters.
+
+###### Returns
+
+Transform ([`Transformer`][unified-transformer]).
 
 ## Messages
 
 Each message is emitted as a [`VFileMessage`][vfile-message] on `file`, with
-the following fields:
-
-###### `message.source`
-
-Name of this plugin (`'retext-indefinite-article'`).
-
-###### `message.ruleId`
-
-Name of this plugin (`'retext-indefinite-article'`).
-
-###### `message.actual`
-
-Current not ok word (`string`, `'a'` or `'an'`).
-
-###### `message.expected`
-
-Array with one value (`Array<string>`, containing either `'a'` or `'an'`).
+`source` set to `'retext-indefinite-article'`, `ruleId` to
+`'retext-indefinite-article'`, `actual` to the unexpected word, and `expected`
+to suggestions.
 
 ## Types
 
@@ -139,10 +132,14 @@ It exports no additional types.
 
 ## Compatibility
 
-Projects maintained by the unified collective are compatible with all maintained
+Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
-As of now, that is Node.js 12.20+, 14.14+, 16.0+, and 18.0+.
-Our projects sometimes work with older versions, but this is not guaranteed.
+
+When we cut a new major release, we drop support for unmaintained versions of
+Node.
+This means we try to keep the current release line,
+`retext-indefinite-article@^4`,
+compatible with Node.js 12.
 
 ## Related
 
@@ -179,9 +176,9 @@ abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/retext-indefinite-article
 
-[size-badge]: https://img.shields.io/bundlephobia/minzip/retext-indefinite-article.svg
+[size-badge]: https://img.shields.io/bundlejs/size/retext-indefinite-article
 
-[size]: https://bundlephobia.com/result?p=retext-indefinite-article
+[size]: https://bundlejs.com/?q=retext-indefinite-article
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
@@ -213,8 +210,12 @@ abide by its terms.
 
 [author]: https://wooorm.com
 
-[unified]: https://github.com/unifiedjs/unified
-
 [retext]: https://github.com/retextjs/retext
 
+[unified]: https://github.com/unifiedjs/unified
+
+[unified-transformer]: https://github.com/unifiedjs/unified#transformer
+
 [vfile-message]: https://github.com/vfile/vfile-message
+
+[api-retext-indefinite-article]: #unifieduseretextindefinitearticle
